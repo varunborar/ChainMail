@@ -1,0 +1,3 @@
+Dear ${Name},
+This is a test mail from python!
+Your number is ${Number}
