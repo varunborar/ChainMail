@@ -29,7 +29,7 @@ All the fields that are to be replaced in message should be enclosed in the form
   <li>Pandas </li>
   <li>PYQT5 </li>
   <li>Qt designer </li>
-  <li>ppenpyxl / xlrd </li>
+  <li>openpyxl / xlrd </li>
   <li>smtplib, ssl </li>
  </ol>
  
