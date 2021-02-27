@@ -17,3 +17,23 @@ someone@example.com Some Name 9876543210
 <a href="https://github.com/varunborar/ChainMail/blob/master/contact.xlsx">See example file<a>
 
 <h3> Creating Message Template </h3>
+A message template should be saved in a Text document file (*.txt). <br>
+All the fields that are to be replaced in message should be enclosed in ${Header}, where Header correspond to the column name in the excel file.
+
+<br>
+<a href="https://github.com/varunborar/ChainMail/blob/master/emailTemplate.txt"> See emaple file <a>
+
+<h3> Dependencies </h3>
+
+<ol>
+  <li>Pandas </li>
+  <li>PYQT5 </li>
+  <li>Qt designer </li>
+  <li>ppenpyxl / xlrd </li>
+  <li>smtplib, ssl </li>
+ </ol>
+ 
+<h3> Note </h3>
+By default it uses only "smtp.gmail.com" as smtp server for changing server or port use keyword arguments while creating instance of Mail class. <br>
+
+ 
