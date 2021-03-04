@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog, QMainWindow
+from PyQt5.QtWidgets import QApplication, QDialog, QLineEdit, QFileDialog, QMainWindow
 import sys
 
 from PyQt5.uic import loadUi
@@ -25,11 +25,11 @@ class MainWindow(QMainWindow):
 
 
     def browseExcelFile(self):
-        self.contactFilePath = QFileDialog.getOpenFileName(self, "Open File", r"C:", "Microsoft Excel Worksheet (*.xlsx)")
+        self.contactFilePath = QFileDialog.getOpenFileName(self, "Open File", r"D:\Code\Mail", "Microsoft Excel Worksheet (*.xlsx)")
         self.ContactList.setText(self.contactFilePath[0].split('/')[-1])
 
     def browseTextFile(self):
-        self.mailTemplatePath = QFileDialog.getOpenFileName(self, "Open File", r"C:", "Text Document (*.txt)")
+        self.mailTemplatePath = QFileDialog.getOpenFileName(self, "Open File", r"C:\Code\Mail", "Text Document (*.txt)")
         self.MailTemplate.setText(self.mailTemplatePath[0].split('/')[-1])
     
     def loginDialogueBox(self):
@@ -59,8 +59,11 @@ class MainWindow(QMainWindow):
 
         for number in range(excelReader.rows):
             details = excelReader.retContact(number)
-            self.logText += Mailer.sendMail(textReader.createMessage(details),details[0]) + "\n"
+            result = Mailer.sendMail(textReader.createMessage(details),details[0]) + "\n"
+            self.logText += result
+            print(result)
             self.logScreen.setText(self.logText)
+
         
 
 
@@ -73,9 +76,11 @@ class LoginDialog(QDialog):
         super(LoginDialog,self).__init__()
         loadUi(r"src\GUI\Login.ui", self)
 
+        self.Password.setEchoMode(QLineEdit.Password)
         # Connecting push buttons 
         self.LoginButton.clicked.connect(self.validateLoginInfo)
         self.Cancel.clicked.connect(self.cancelOperation)
+        
 
     def validateLoginInfo(self):
         self.MailID = self.Email.text()
